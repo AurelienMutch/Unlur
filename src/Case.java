@@ -1,5 +1,3 @@
-package unlur;
-
 public class Case {
 
 	

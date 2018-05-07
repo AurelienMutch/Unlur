@@ -1,8 +1,6 @@
-package unlur;
-
 import java.util.ArrayList;
 
-public class main {
+public class Test {
 	public static void main(String[] args) {
 		Terrain t = new Terrain(3);
 		ArrayList<Case> oui = t.getVoisins(1,-1,0);

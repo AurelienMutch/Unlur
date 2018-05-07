@@ -27,7 +27,8 @@ public class Affichage {
 	       String[] Levels = {"1 Joueur","2 Joueurs","En Ligne", "Aide", "Credits", "Quitter"};
 	       HBox hbTitle = new HBox();
 	       Label title1 = new Label("UNLUR");
-	       title1.setAlignment(Pos.CENTER);
+	       HBox hbBot = new HBox();
+	       GridPane gridSound = new GridPane();
 	       BorderPane br = new BorderPane();
 	       GridPane Menus = new GridPane();
 	       VBox vb = new VBox();
@@ -35,17 +36,16 @@ public class Affichage {
            HBox hb = new HBox();
            HBox hb2 = new HBox();
 	       HBox hb3 = new HBox();
+	       Button sound = new Button();
+	       Button sfx = new Button();
            Label lab = new Label("          ");
            Label lab2 = new Label("          ");
            Label lab3 = new Label("          ");
+           
 	       for(int i=0;i < Levels.length; i++) {
-
 	           int level = i;
 	           GridPane SubMenu = new GridPane();
-	           
-
 	           Button SubButton = new Button(Levels[i]);
-
 	          /* SubButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
 	               @Override
 	               public void handle(MouseEvent e) {
@@ -57,20 +57,20 @@ public class Affichage {
 	                   afficheStage();
 
 	               }});*/
-
 	           SubMenu.add(SubButton,4,6);
-	           
 	           if (i < 2) {
 	        	   hb.getChildren().add(SubButton);
 	           } else {
 	        	   Menus.add(SubMenu,0,i,2,1);   
 	           }
 	       }
+	       
 	       Menus.setVgap(10);
-	      // hbTitle.getChildren().add(title0);
 	       hbTitle.getChildren().add(title1);
-	       //hbTitle.getChildren().add(title2);
 	       hbTitle.setAlignment(Pos.CENTER);
+	       gridSound.add(sfx, 0,0);
+	       gridSound.add(sound, 1, 0);
+	       gridSound.setAlignment(Pos.BOTTOM_RIGHT);
 	       hb.setSpacing(10);
 	       hb2.getChildren().add(lab);
 	       hb3.getChildren().add(lab2);
@@ -86,8 +86,9 @@ public class Affichage {
 	       hbcore.setAlignment(Pos.CENTER);
 	       br.setTop(hbTitle);
 	       br.setCenter(hbcore);
+	       br.setBottom(gridSound);
 	       
-	       this.scene = new Scene(br, 300, 200);
+	       this.scene = new Scene(br, 400, 300);
 	       
 	}
 	
@@ -104,7 +105,6 @@ public class Affichage {
 	public void ConfigJcJ(){
 		
 	}
-	
 	
 	
 	public void ConfigJcC(){

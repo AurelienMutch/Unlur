@@ -3,6 +3,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
@@ -24,7 +25,10 @@ public class Affichage {
 	public void Menu(){
 		
 	       String[] Levels = {"1 Joueur","2 Joueurs","En Ligne", "Aide", "Credits", "Quitter"};
-
+	       HBox hbTitle = new HBox();
+	       Label title1 = new Label("UNLUR");
+	       title1.setAlignment(Pos.CENTER);
+	       BorderPane br = new BorderPane();
 	       GridPane Menus = new GridPane();
 	       VBox vb = new VBox();
 	       VBox vb2= new VBox();
@@ -63,6 +67,10 @@ public class Affichage {
 	           }
 	       }
 	       Menus.setVgap(10);
+	      // hbTitle.getChildren().add(title0);
+	       hbTitle.getChildren().add(title1);
+	       //hbTitle.getChildren().add(title2);
+	       hbTitle.setAlignment(Pos.CENTER);
 	       hb.setSpacing(10);
 	       hb2.getChildren().add(lab);
 	       hb3.getChildren().add(lab2);
@@ -72,9 +80,14 @@ public class Affichage {
 	       vb2.getChildren().add(hb2);
 	       vb2.getChildren().add(hb);
 	       vb.getChildren().add(vb2);
-	       
 	       vb.getChildren().add(hb3);
-	       this.scene = new Scene(vb, 300, 200);
+	       HBox hbcore = new HBox();
+	       hbcore.getChildren().add(vb);
+	       hbcore.setAlignment(Pos.CENTER);
+	       br.setTop(hbTitle);
+	       br.setCenter(hbcore);
+	       
+	       this.scene = new Scene(br, 300, 200);
 	       
 	}
 	

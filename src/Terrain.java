@@ -1,13 +1,11 @@
-package unlur;
-
 import java.util.ArrayList;
 
 public class Terrain {
 
 	int taille;
 	Case [][][] terrain;	
-	//Config du tableau : de 0 à t-1 les coord pos
-	//					  de t+1 à 2*t les coord négatifs 
+	//Config du tableau : de 0 ï¿½ t-1 les coord pos
+	//					  de t+1 ï¿½ 2*t les coord nï¿½gatifs 
 	// Example: pour t=4 on a terrain[1][3][-2] -> terrain[1][3][-2]
 	
 	public Terrain(int t) {

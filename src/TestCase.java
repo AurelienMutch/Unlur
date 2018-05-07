@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Test {
+public class TestCase {
 	public static void main(String[] args) {
 		Terrain t = new Terrain(3);
 		ArrayList<Case> oui = t.getVoisins(1,-1,0);

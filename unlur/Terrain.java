@@ -5,7 +5,10 @@ import java.util.ArrayList;
 public class Terrain {
 
 	int taille;
-	Case [][][] terrain;
+	Case [][][] terrain;	
+	//Config du tableau : de 0 à t-1 les coord pos
+	//					  de t+1 à 2*t les coord négatifs 
+	// Example: pour t=4 on a terrain[1][3][-2] -> terrain[1][3][-2]
 	
 	public Terrain(int t) {
 		int x,y,z;
@@ -33,29 +36,6 @@ public class Terrain {
 		}
 	}
 	
-	public ArrayList <Case> getVoisins(Case c) {
-		ArrayList<Case>voisins = new ArrayList<Case>();
-		if(terrain[c.getX()][c.getY()+1][c.getZ()-1]!=null) {
-			voisins.add(terrain[c.getX()][c.getY()-1][c.getZ()-1]);
-		}
-		if(terrain[c.getX()][c.getY()-1][c.getZ()+1]!=null) {
-			voisins.add(terrain[c.getX()][c.getY()-1][c.getZ()-1]);
-		}
-		if(terrain[c.getX()+1][c.getY()-1][c.getZ()+1]!=null) {
-			voisins.add(terrain[c.getX()][c.getY()-1][c.getZ()-1]);
-		}
-		if(terrain[c.getX()+1][c.getY()][c.getZ()-1]!=null) {
-			voisins.add(terrain[c.getX()][c.getY()-1][c.getZ()-1]);
-		}
-		if(terrain[c.getX()-1][c.getY()+1][c.getZ()]!=null) {
-			voisins.add(terrain[c.getX()][c.getY()-1][c.getZ()-1]);
-		}
-		if(terrain[c.getX()+1][c.getY()-1][c.getZ()]!=null) {
-			voisins.add(terrain[c.getX()][c.getY()-1][c.getZ()-1]);
-		}
-		return voisins;
-	}
-	
 	public ArrayList <Case> getVoisins(int x, int y, int z) {
 		ArrayList<Case>voisins = new ArrayList<Case>();
 		if(coordPos(x)>0) {
@@ -65,7 +45,6 @@ public class Terrain {
 			if(terrain[coordPos(x-1)][coordPos(y+1)][coordPos(z)].getCouleur()!=-1) {
 				voisins.add(terrain[coordPos(x-1)][coordPos(y+1)][coordPos(z)]);
 			}
-			System.out.println(coordPos(x)+","+coordPos(y)+","+coordPos(z));
 		}
 		if(coordPos(y)>0) {
 			if(terrain[coordPos(x)][coordPos(y-1)][coordPos(z+1)].getCouleur()!=-1) {
@@ -83,8 +62,34 @@ public class Terrain {
 				voisins.add(terrain[coordPos(x+1)][coordPos(y)][coordPos(z-1)]);
 			}			
 		}
-		for (int i =0;i<voisins.size()-1;i++) {
-			System.out.println(voisins.get(i).getX()+","+voisins.get(i).getY()+","+voisins.get(i).getZ());
+		return voisins;
+	}
+	
+	public ArrayList <Case> getVoisinsCouleur(int x, int y, int z, int couleur) {
+		ArrayList<Case>voisins = new ArrayList<Case>();
+		if(coordPos(x)>0) {
+			if(terrain[coordPos(x-1)][coordPos(y)][coordPos(z+1)].getCouleur()==couleur) {
+				voisins.add(terrain[coordPos(x-1)][coordPos(y)][coordPos(z+1)]);
+			}
+			if(terrain[coordPos(x-1)][coordPos(y+1)][coordPos(z)].getCouleur()==couleur) {
+				voisins.add(terrain[coordPos(x-1)][coordPos(y+1)][coordPos(z)]);
+			}
+		}
+		if(coordPos(y)>0) {
+			if(terrain[coordPos(x)][coordPos(y-1)][coordPos(z+1)].getCouleur()==couleur) {
+				voisins.add(terrain[coordPos(x)][coordPos(y-1)][coordPos(z+1)]);
+			}
+			if(terrain[coordPos(x+1)][coordPos(y-1)][coordPos(z)].getCouleur()==couleur) {
+				voisins.add(terrain[coordPos(x+1)][coordPos(y-1)][coordPos(z)]);
+			}
+		}
+		if(coordPos(z)>0) {
+			if(terrain[coordPos(x)][coordPos(y)+1][coordPos(z)-1].getCouleur()==couleur) {
+				voisins.add(terrain[coordPos(x)][coordPos(y)+1][coordPos(z)-1]);
+			}
+			if(terrain[coordPos(x+1)][coordPos(y)][coordPos(z-1)].getCouleur()==couleur) {
+				voisins.add(terrain[coordPos(x+1)][coordPos(y)][coordPos(z-1)]);
+			}			
 		}
 		return voisins;
 	}

@@ -4,6 +4,11 @@ public class Case {
 
 	
 	private int couleur;
+	/* Couleur :    -1 -> case hors plateau
+	 * 				0 -> case vide
+	 *				1 -> case noir 
+	 *				2 -> case blanche
+	 */
 	private int x;
 	private int y;
 	private int z;

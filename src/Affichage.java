@@ -63,6 +63,13 @@ public class Affichage {
 	           } else {
 	        	   Menus.add(SubMenu,0,i,2,1);   
 	           }
+		   SubButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
+	               @Override
+	               public void handle(MouseEvent e) {
+	                   if (SubButton.getText() == "Quitter") {
+	                	   System.exit(0);
+	                   }
+	               }});    
 	       }
 	       
 	       Menus.setVgap(10);
